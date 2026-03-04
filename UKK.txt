@@ -1,0 +1,24 @@
+Repository
+
+                    deb http://archive.debian.org/debian buster main contrib non-free
+                    deb http://archive.debian.org/debian-security buster/updates main contrib no-free
+                    deb http://archive.debian.org/debian buster-backports main contrib non-free
+Membuat database
+                        1.mysql -u root -p
+                        2.CREATE DATABASE moodle;
+                        3.CREATE USER 'moodleuser'@'%' IDENTIFIED BY '123';</p>
+                        4.GRANT ALL ON moodle.* TO 'moodleuser'@'%' IDENTIFIED BY '123' WITH GRANT OPTION;
+                        5.FLUSH PRIVILEGES;
+                        6.EXIT;
+install php
+                        apt intstall apache2 php7.3 php7.3-cli php7.3-mysql php7.3-gd php7.3-xml php7.3-curl php7.3-mbstring php7.3-intl php7.3-zip php7.3-soap -y
+install moodle web ct
+                            cd /var/www/html
+                            wget https://sourceforge.net/prjects/moodle/files/Moodle/stable38/moodle-3.8.1.tgz
+                            tar -zxvf moodle-3.8.1.tgz
+                            mkdir moodledata
+                            chown -R www-data /var/www/html/moodle
+                            chown -R 777 /var/www/html/moodle
+                            chown -R www-data /var/www/html/moodledata
+                            chown -R 777 /var/www/html/moodledata
+                   
