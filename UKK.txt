@@ -21,4 +21,7 @@ install moodle web ct
                             chown -R 777 /var/www/html/moodle
                             chown -R www-data /var/www/html/moodledata
                             chown -R 777 /var/www/html/moodledata
+nano /var/www/html/moodle/config.php
+http://' . $_SERVER['HTTP_HOST'];
                    
+
