@@ -1,0 +1,24 @@
+# cek nama database moodle
+moodle/config.php 
+# biasanya pada bagian 
+$cfg->dbname = 'moodle';
+$cfg->user = 'root';
+
+# masuk cmd ketikan
+tar -cvzf moodle_backup.tar.gz /var/www/html/moodle
+# backup folder moodledata
+tar -cvzf moodledata_backup.tar.gz /var/www/html/moodle   
+# file backup akan menjadi
+	- moodle_backup.tar.gz
+	- moodledata_backup.tar.gz
+# backup database
+mysqldump -u username -p moodle > moodle.sql
+# masukan password
+# file hasil backup menjadi
+moodle.sql
+# file yang harus disimpan 
+	moodle_backup.tar.gz
+	moodledata_backup.tar.gz
+	moodle.sql
+# kalau ketiga file ini ada moodle bisa di restore sepenuhnya
+

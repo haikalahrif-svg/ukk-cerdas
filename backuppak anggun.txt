@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DATE=$(date+%F)
+
+# backup database
+mysqldump -u root -pPASSWORD nama_database > $BACKUP_DIR/db_$DATE.sql
+
+# backup web
+tar -czvf $BACKUP_DIR/web_$DATE.tar.qz /var/www/html
+
+# gabungkan backup
+tar -czvf $BACKUP_DIR/full_backup_$DATE.tar.gz $BACKUP_DIR/db_$DATE.sql $BACKUP_DIR/web_DATE.tar.gz
+
+# hapus file sementara
+rm $BACKUP_DIR/db_$DATE.sql
+rm $BACKUP_DIR/web_$DATE.tar.gz 
