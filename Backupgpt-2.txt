@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DATE=$(date +%F)
+BACKUP_DIR="/home/backup"
+DB_NAME="nama_database"
+DB_USER="root"
+DB_PASS="PASSWORD"
+
+mkdir -p "$BACKUP_DIR"
+
+# Backup database
+mysqldump -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" > "$BACKUP_DIR/db_$DATE.sql"
+
+# Backup web
+tar -czf "$BACKUP_DIR/web_$DATE.tar.gz" /var/www/html
+
+# Gabungkan backup
+tar -czf "$BACKUP_DIR/full_backup_$DATE.tar.gz" \
+"$BACKUP_DIR/db_$DATE.sql" \
+"$BACKUP_DIR/web_$DATE.tar.gz"
+
+# Hapus file sementara
+rm -f "$BACKUP_DIR/db_$DATE.sql"
+rm -f "$BACKUP_DIR/web_$DATE.tar.gz"
+
+echo "Backup selesai: $BACKUP_DIR/full_backup_$DATE.tar.gz"
